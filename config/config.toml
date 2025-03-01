@@ -1,0 +1,13 @@
+[auth]
+secret_id = "secret id"
+secret_key = "secret key"
+
+[[buckets]]
+alias = "b1"
+bucket = "bucket1"
+region = "ap-shanghai"
+
+[[buckets]]
+alias = "b2"
+bucket = "bucket2"
+region = "ap-beijing"
