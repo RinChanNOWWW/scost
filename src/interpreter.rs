@@ -9,9 +9,10 @@ use rustyline_derive::Highlighter;
 use rustyline_derive::Hinter;
 use rustyline_derive::Validator;
 
-use crate::command::CopyCommand;
-use crate::command::ListCommand;
-use crate::command::RemoveCommand;
+use crate::command::CommandCopy;
+use crate::command::CommandList;
+use crate::command::CommandRemove;
+use crate::command::CommandSign;
 use crate::command::COMMANDS;
 use crate::Result;
 
@@ -71,6 +72,7 @@ impl Interpreter {
                     match self.interpret(&cmd_with_args).await {
                         Ok(res) => {
                             res.printstd();
+                            println!();
                         }
                         Err(e) => {
                             println!("<Error> {}", &e);
@@ -102,9 +104,10 @@ impl Interpreter {
         let args = &cmd_with_args[1..];
 
         match cmd.as_ref() {
-            CopyCommand::COMMAND => CopyCommand::execute(args).await,
-            ListCommand::COMMAND => ListCommand::execute(args).await,
-            RemoveCommand::COMMAND => RemoveCommand::execute(args).await,
+            CommandCopy::COMMAND => CommandCopy::execute(args).await,
+            CommandList::COMMAND => CommandList::execute(args).await,
+            CommandRemove::COMMAND => CommandRemove::execute(args).await,
+            CommandSign::COMMAND => CommandSign::execute(args).await,
             _ => Err(anyhow!("Unkown command: {}", cmd)),
         }
     }

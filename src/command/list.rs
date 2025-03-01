@@ -25,13 +25,22 @@ impl Command for List {
         let results = futures::future::try_join_all(futs)
             .await?
             .into_iter()
-            .flatten()
             .collect::<Vec<_>>();
 
-        for (b, children) in buckets.iter().zip(results.iter()) {
-            children.iter().for_each(|path| {
-                tab.add_row(row![b.bucket.alias, path]);
-            });
+        for (b, res) in buckets.iter().zip(results.iter()) {
+            match res {
+                Ok(children) => {
+                    children.iter().for_each(|path| {
+                        tab.add_row(row![b.bucket.alias, path]);
+                    });
+                }
+                Err(e) => {
+                    tab.add_row(row![
+                        b.bucket.alias,
+                        format!("Failed to fetch objects: {}", e)
+                    ]);
+                }
+            }
         }
 
         Ok(tab)

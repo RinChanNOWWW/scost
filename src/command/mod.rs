@@ -10,6 +10,7 @@ use crate::Result;
 mod copy;
 mod list;
 mod remove;
+mod sign;
 
 pub trait Command {
     const COMMAND: &'static str;
@@ -60,12 +61,14 @@ impl<C: Command> CommandHelper<C> {
     }
 }
 
-pub type CopyCommand = CommandHelper<copy::Copy>;
-pub type ListCommand = CommandHelper<list::List>;
-pub type RemoveCommand = CommandHelper<remove::Remove>;
+pub type CommandCopy = CommandHelper<copy::Copy>;
+pub type CommandList = CommandHelper<list::List>;
+pub type CommandRemove = CommandHelper<remove::Remove>;
+pub type CommandSign = CommandHelper<sign::Sign>;
 
-pub const COMMANDS: [&str; 3] = [
-    CopyCommand::COMMAND,
-    ListCommand::COMMAND,
-    RemoveCommand::COMMAND,
+pub const COMMANDS: [&str; 4] = [
+    CommandCopy::COMMAND,
+    CommandList::COMMAND,
+    CommandRemove::COMMAND,
+    CommandSign::COMMAND,
 ];
