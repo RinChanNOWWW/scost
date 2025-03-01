@@ -42,7 +42,7 @@ impl<C: Command> CommandHelper<C> {
             ));
         }
 
-        let instance = GlobalInstance::get();
+        let instance = GlobalInstance::instance();
 
         let mut buckets = Vec::with_capacity(C::NUM_ARGS - 1);
         for b in args[0..C::NUM_ARGS - 1].iter() {

@@ -1,17 +1,22 @@
 [package]
 name = "scost"
 authors = ["RinChanNOWWW <rin_chan_now@outlook.com>"]
-description = "Simple COS (Tencent Cloud OSS) table to manage objects with same names across multiple buckets."
+description = "A simple command line tool to manage objects with same names across multiple buckets (for Tencent Cloud COS only)."
 version = "0.1.0"
 edition = "2024"
+license = "MIT"
+repository = "https://github.com/RinChanNOWWW/scost"
 
 [dependencies]
 anyhow = "1.0.96"
+chrono = "0.4.40"
 clap = { version = "4.5.31", features = ["derive", "env"] }
 env_home = "0.1.0"
 futures = "0.3.31"
+http = "1.2.0"
 opendal = { version = "0.52.0", features = ["services-cos"] }
 prettytable-rs = "0.10.0"
+reqsign = "0.16.1"
 rustyline = "15.0.0"
 rustyline-derive = "0.11.0"
 serde = { version = "1.0.218", features = ["derive"] }

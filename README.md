@@ -20,11 +20,12 @@ into an interactive shell.
 
 ## Commands
 
-- [WIP] `cp <from_bucket> [<to_bucket>|*] <path>`. Copy an existing object from one bucket to another bucket (or all buckets).
+- `cp <from_bucket> [<to_bucket>|*] <path>`. Copy an existing object from one bucket to another bucket (or all buckets).
 - `ls [<bucket>|*] <path>`. List objects under a path in a bucket (or all buckets).
 - `rm [<bucket>|*] <path>`. Remove an object from a bucket (or all buckets).
 - `sign [<bucket>|*] <path>`. Sign a url for an object in a bucket (or all buckets).
 
+P.S. '*' represents all buckets.
 
 ## Configuration
 
@@ -47,3 +48,7 @@ alias = "b2"
 bucket = "bucket2"
 region = "ap-beijing"
 ```
+
+## TODO
+
+- `cp` supports copying a directory recursively.

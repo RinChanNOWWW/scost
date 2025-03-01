@@ -12,7 +12,7 @@ impl GlobalInstance {
         let _ = GLOBAL.set(Instance::new(config)?);
         Ok(())
     }
-    pub fn get() -> &'static Instance {
+    pub fn instance() -> &'static Instance {
         GLOBAL.get()
     }
 }
